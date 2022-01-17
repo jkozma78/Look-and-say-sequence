@@ -33,4 +33,4 @@ class LookAndSaySequence:
             self.conway = ""
             self.currentnumber = self.input[0]
 
-        return input
+        return self.input
