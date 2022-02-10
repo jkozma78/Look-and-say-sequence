@@ -4,7 +4,7 @@ class LookAndSaySequence:
 
     def __init__(self, start_number, elements):
         """Init the arguments"""
-        self.start_number = str(start_number)  # the first number of sequence
+        self.start_number = str(start_number)  # the first number of sequence, later it is the result
         self.number_count = 0  # counting the number
         self.conway = ""  # created conway number
         self.current_number = self.start_number[0]  # the actual number to count
@@ -12,7 +12,8 @@ class LookAndSaySequence:
         self.calculation()  # call the function, what is able to calculate the elements number of conway sequence
 
     def __str__(self):
-        return f' {self.elements}th number: {self.start_number}'
+        """return a number of sequence"""
+        return self.start_number
 
     def __len__(self):
         return len(self.start_number)
@@ -21,7 +22,7 @@ class LookAndSaySequence:
         """Calculate the conway sequence"""
         for n in range(1, self.elements):
             # calculate the self.elements number
-            for i in range(len(self.start_number)):
+            for i, unused_variable in enumerate(self.start_number):
                 if self.start_number[i] == self.current_number:
                     self.number_count += 1
                 else:
@@ -31,10 +32,8 @@ class LookAndSaySequence:
                 if i == len(self.start_number) - 1:
                     self.conway = self.conway + str(self.number_count) + self.current_number
             # reset these variables
-            #print(self.start_number)
             self.start_number = self.conway
             self.number_count = 0
             self.conway = ""
             self.current_number = self.start_number[0]
-
         return self.start_number
